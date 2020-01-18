@@ -125,20 +125,12 @@ plt.show()
 
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-2-bd4d5bbba26c> in <module>
-          5 plt.show()
-          6 
-    ----> 7 __file__
-    
-
-    NameError: name '__file__' is not defined
-
-
-
 ```python
 !jupyter nbconvert --to markdown README.ipynb
 ```
+
+    [NbConvertApp] Converting notebook README.ipynb to markdown
+    [NbConvertApp] Support files will be in README_files/
+    [NbConvertApp] Making directory README_files
+    [NbConvertApp] Writing 3111 bytes to README.md
+
