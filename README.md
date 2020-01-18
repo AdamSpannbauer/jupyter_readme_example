@@ -121,16 +121,22 @@ plt.show()
 ```
 
 
-![png](README_files/README_2_0.png)
+![png](custom_name_files/custom_name_2_0.png)
 
 
 
 ```python
-!jupyter nbconvert --to markdown README.ipynb
+# Example os to rename everything after using a notebook not called README
+import os
+
+!jupyter nbconvert --to markdown custom_name.ipynb
+
+nb_name = 'custom_name.ipynb'
+os.rename('custom_name.md', 'README.md')
 ```
 
-    [NbConvertApp] Converting notebook README.ipynb to markdown
-    [NbConvertApp] Support files will be in README_files/
-    [NbConvertApp] Making directory README_files
-    [NbConvertApp] Writing 3111 bytes to README.md
+    [NbConvertApp] Converting notebook custom_name.ipynb to markdown
+    [NbConvertApp] Support files will be in custom_name_files/
+    [NbConvertApp] Making directory custom_name_files
+    [NbConvertApp] Writing 2990 bytes to custom_name.md
 
