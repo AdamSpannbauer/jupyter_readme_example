@@ -114,38 +114,82 @@ plt.show()
 
 
 ```python
-# Example os to rename everything after using a notebook not called README
 import os
+import lxml
 from lxml.html.clean import Cleaner
+from IPython.core.magics.display import Javascript
 
-# GitHub flavored markdown doesn't display some stuff properly
 
+def clean_readme_md(path='README.md'):
+    """Clean up markdown for GitHub
+    
+    GitHub flavored markdown doesn't support inline style/js.
+    This helper attempts to remove it.
+    
+    :param path: file path to read/write markdown from
+    :return: None; file located at path is modified
+    """
+    cleaner = Cleaner()
+    cleaner.javascript = True
+    cleaner.style = True
+
+    readme_html = lxml.html.parse(path)
+    clean_readme = cleaner.clean_html(readme_html)
+    clean_readme_str = lxml.html.tostring(clean_readme).decode()
+    
+    with open(path, 'w') as f:
+        f.write(clean_readme_str)
+        
+
+def jupyter_to_readme(jupyter_name, readme_name='README.md'):
+    # Save notebook to ensure current version is saved as README.md
+    Javascript('IPython.notebook.save_notebook()')
+    !jupyter nbconvert --to markdown $jupyter_name
+    
+    base_name = os.path.splitext(jupyter_name)[0]
+    md_name = base_name + '.md'
+    
+    os.rename(md_name, readme_name)
+    clean_readme_md(readme_name)
 ```
 
 
 ```python
-
-```
-
-
-```python
-# Example os to rename everything after using a notebook not called README
-import os
-from lxml.html.clean import Cleaner
-
-cleaner = Cleaner()
-cleaner.javascript = True
-cleaner.style = True
-
-!jupyter nbconvert --to markdown custom_name.ipynb
-
-nb_name = 'custom_name.ipynb'
-os.rename('custom_name.md', 'README.md')
+jupyter_to_readme('custom_name.ipynb')
 ```
 
     [NbConvertApp] Converting notebook custom_name.ipynb to markdown
     [NbConvertApp] Support files will be in custom_name_files/
     [NbConvertApp] Making directory custom_name_files
-    [NbConvertApp] Writing 7293 bytes to custom_name.md
+    [NbConvertApp] Writing 4688 bytes to custom_name.md
 
+
+
+```python
+os.path.split('custom_name.ipynb')
+```
+
+
+
+
+    ('', 'custom_name.ipynb')
+
+
+
+
+```python
+os.path.splitext('custom_name.ipynb')
+```
+
+
+
+
+    ('custom_name', '.ipynb')
+
+
+
+
+```python
+
+```
 </body></div>
