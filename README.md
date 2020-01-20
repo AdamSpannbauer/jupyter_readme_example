@@ -144,7 +144,7 @@ def clean_readme_md(path='README.md'):
 def jupyter_to_readme(jupyter_name, readme_name='README.md'):
     # Save notebook to ensure current version is saved as README.md
     Javascript('IPython.notebook.save_notebook()')
-    !jupyter nbconvert --to markdown $jupyter_name
+    os.system(f'jupyter nbconvert --to markdown {jupyter_name}')
     
     base_name = os.path.splitext(jupyter_name)[0]
     md_name = base_name + '.md'
@@ -155,17 +155,12 @@ def jupyter_to_readme(jupyter_name, readme_name='README.md'):
 
 
 ```python
-Javascript('IPython.notebook.save_notebook()')
-```
-
-
-```python
 jupyter_to_readme('custom_name.ipynb')
 ```
 
     [NbConvertApp] Converting notebook custom_name.ipynb to markdown
     [NbConvertApp] Support files will be in custom_name_files/
     [NbConvertApp] Making directory custom_name_files
-    [NbConvertApp] Writing 4368 bytes to custom_name.md
+    [NbConvertApp] Writing 4174 bytes to custom_name.md
 
 </body></div>
