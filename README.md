@@ -155,41 +155,17 @@ def jupyter_to_readme(jupyter_name, readme_name='README.md'):
 
 
 ```python
+Javascript('IPython.notebook.save_notebook()')
+```
+
+
+```python
 jupyter_to_readme('custom_name.ipynb')
 ```
 
     [NbConvertApp] Converting notebook custom_name.ipynb to markdown
     [NbConvertApp] Support files will be in custom_name_files/
     [NbConvertApp] Making directory custom_name_files
-    [NbConvertApp] Writing 4688 bytes to custom_name.md
+    [NbConvertApp] Writing 4368 bytes to custom_name.md
 
-
-
-```python
-os.path.split('custom_name.ipynb')
-```
-
-
-
-
-    ('', 'custom_name.ipynb')
-
-
-
-
-```python
-os.path.splitext('custom_name.ipynb')
-```
-
-
-
-
-    ('custom_name', '.ipynb')
-
-
-
-
-```python
-
-```
 </body></div>
