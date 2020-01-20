@@ -1,4 +1,4 @@
-<div><body><p># Jupyter notebook README example
+# Jupyter notebook README example
 
 This README was created with Jupyter.
 
@@ -39,11 +39,23 @@ iris.head()
 
 
 
-</p><div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
-    <tr>
+    <tr style="text-align: right;">
       <th></th>
       <th>sepal_length</th>
       <th>sepal_width</th>
@@ -114,6 +126,17 @@ plt.show()
 
 
 ```python
+!jupyter nbconvert custom_name.ipynb --to markdown --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags="['style']"
+os.rename('custom_name.md', 'README.md')
+
+```
+
+    [NbConvertApp] Converting notebook custom_name.ipynb to markdown
+    [NbConvertApp] Support files will be in custom_name_files/
+    [NbConvertApp] Making directory custom_name_files
+    [NbConvertApp] Writing 4360 bytes to custom_name.md
+
+
 import os
 import lxml
 from lxml.html.clean import Cleaner
@@ -151,16 +174,5 @@ def jupyter_to_readme(jupyter_name, readme_name='README.md'):
     
     os.rename(md_name, readme_name)
     clean_readme_md(readme_name)
-```
 
-
-```python
 jupyter_to_readme('custom_name.ipynb')
-```
-
-    [NbConvertApp] Converting notebook custom_name.ipynb to markdown
-    [NbConvertApp] Support files will be in custom_name_files/
-    [NbConvertApp] Making directory custom_name_files
-    [NbConvertApp] Writing 4174 bytes to custom_name.md
-
-</body></div>
