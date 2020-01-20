@@ -1,4 +1,4 @@
-# Jupyter notebook README example
+<div><body><p># Jupyter notebook README example
 
 This README was created with Jupyter.
 
@@ -39,23 +39,11 @@ iris.head()
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+</p><div>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>sepal_length</th>
       <th>sepal_width</th>
@@ -128,6 +116,26 @@ plt.show()
 ```python
 # Example os to rename everything after using a notebook not called README
 import os
+from lxml.html.clean import Cleaner
+
+# GitHub flavored markdown doesn't display some stuff properly
+
+```
+
+
+```python
+
+```
+
+
+```python
+# Example os to rename everything after using a notebook not called README
+import os
+from lxml.html.clean import Cleaner
+
+cleaner = Cleaner()
+cleaner.javascript = True
+cleaner.style = True
 
 !jupyter nbconvert --to markdown custom_name.ipynb
 
@@ -138,5 +146,6 @@ os.rename('custom_name.md', 'README.md')
     [NbConvertApp] Converting notebook custom_name.ipynb to markdown
     [NbConvertApp] Support files will be in custom_name_files/
     [NbConvertApp] Making directory custom_name_files
-    [NbConvertApp] Writing 2990 bytes to custom_name.md
+    [NbConvertApp] Writing 7293 bytes to custom_name.md
 
+</body></div>
